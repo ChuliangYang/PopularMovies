@@ -65,9 +65,10 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
                 if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     getResponseSuccess = true;
                 }
-            } else {
+            } 
+//             else {
 //                Log.d("net", "---------------------------------------------------任务取消了----------------------------------------");
-            }
+//             }
 
         } catch (IOException e) {
             e.printStackTrace();
