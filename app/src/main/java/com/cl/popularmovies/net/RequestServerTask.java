@@ -48,7 +48,7 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
         getResponseSuccess = false;
         String response = "";
         try {
-            Log.e("net", "---------------------------------------------------开始后台网络请求----------------------------------------");
+//            Log.d("net", "---------------------------------------------------开始后台网络请求----------------------------------------");
             HttpURLConnection httpURLConnection = (HttpURLConnection) params[0].openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
             StringBuilder responseBuilder = new StringBuilder();
@@ -66,13 +66,13 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
                     getResponseSuccess = true;
                 }
             } else {
-                Log.e("net", "---------------------------------------------------任务取消了----------------------------------------");
+//                Log.d("net", "---------------------------------------------------任务取消了----------------------------------------");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.e("net", "---------------------------------------------------结束后台网络请求---------------------------------------------");
+//        Log.d("net", "---------------------------------------------------结束后台网络请求---------------------------------------------");
         return response;
     }
 
@@ -92,7 +92,7 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        Log.e("asynctask", "---------------------------------------------------任务取消了----------------------------------------");
+//        Log.d("asynctask", "---------------------------------------------------任务取消了----------------------------------------");
     }
 
     public RequestServerTask showProgressBar(Boolean show) {

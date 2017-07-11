@@ -73,10 +73,11 @@ public class MovieListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MovieItemViewHolder) {
             Glide.with(context).load(JointHelper.jointPicURL(resultsBeans.get(position).getPoster_path())).apply(options).into(((MovieItemViewHolder) holder).iv_movie);
-            Log.e("MovieListAdapter", "显示第" + (position + 1) + "个view");
-        } else {
-            Log.e("MovieListAdapter", "显示footerview");
+//            Log.d("MovieListAdapter", "显示第" + (position + 1) + "个view");
         }
+//        else {
+//            Log.d("MovieListAdapter", "显示footerview");
+//        }
     }
 
     @Override

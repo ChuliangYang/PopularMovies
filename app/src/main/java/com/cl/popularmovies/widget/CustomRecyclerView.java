@@ -75,7 +75,7 @@ public class CustomRecyclerView extends RecyclerView {
                 gridLayoutManager = (GridLayoutManager) getLayoutManager();
                 if (!isScroll) {
                     hideBottomView();
-                    Log.e("recyclerview", "---------------------------------------------------控件没有滑动---------------------------------------");
+//                    Log.d("recyclerview", "---------------------------------------------------控件没有滑动---------------------------------------");
 
                 }
                 if (beforeLoadAmount < getAdapter().getItemCount() && beforeLoadAmount != -1) {
@@ -87,20 +87,20 @@ public class CustomRecyclerView extends RecyclerView {
                     if (gridLayoutManager != null && getAdapter() != null && gridLayoutManager.findLastCompletelyVisibleItemPosition() >= (getAdapter().getItemCount() - 2)) {
                         if (getBottomView() != null) {
                             getBottomView().setVisibility(View.VISIBLE);
-                            Log.e("recyclerview", "---------------------------------------------------显示footview---------------------------------------");
+//                            Log.d("recyclerview", "---------------------------------------------------显示footview---------------------------------------");
                             showBottomView = false;
                         }
                     }
                 }
                 if (isBottomViewVisible() && isScroll) {//recyclerview初始化会在用户未滑动的情况下自动调用几次onScrolled（），而且此时由于没有数据，底部view算是可见，加入isScroll来准确判断用户操作引发的滑动，避免因为这种BUG引发的误判
-                    Log.e("recyclerview", "------------------------------------footview可见---------------------------------------");
+//                    Log.d("recyclerview", "------------------------------------footview可见---------------------------------------");
                     if (startCount) {
                         scrollFromBottomViewTop += dy;
-                        Log.e("scrollFromBottomViewTop", String.valueOf(scrollFromBottomViewTop));
+//                        Log.d("scrollFromBottomViewTop", String.valueOf(scrollFromBottomViewTop));
                     }
                     if (!isLoading && (scrollFromBottomViewTop >= (getBottomView().getHeight() * 2 / 3))) {
-                        Log.e("recyclerview", "---------------------------------------------------footview超过一半可见，开始刷新-----------------------------------------");
-                        Log.e("recyclerview", "BottomView的高度为" + getBottomView().getHeight());
+//                        Log.d("recyclerview", "---------------------------------------------------footview超过一半可见，开始刷新-----------------------------------------");
+//                        Log.d("recyclerview", "BottomView的高度为" + getBottomView().getHeight());
                         onLoadMoreListener.onLoadMore();
                         isLoading = true;
                         beforeLoadAmount = getAdapter().getItemCount();

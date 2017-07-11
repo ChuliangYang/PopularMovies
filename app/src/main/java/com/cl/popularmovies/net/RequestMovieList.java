@@ -36,7 +36,7 @@ public class RequestMovieList implements OnResponseListener {
                     e.printStackTrace();
                 }
 
-                Log.e("url", Constant.REQUEST_POP_LIST_URL + "&&" + page);
+//                Log.d("url", Constant.REQUEST_POP_LIST_URL + "&&" + page);
                 break;
             case SORT_RATED:
                 try {
@@ -44,7 +44,7 @@ public class RequestMovieList implements OnResponseListener {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                Log.e("url", Constant.REQUEST_RATED_LIST_URL + "&&" + page);
+//                Log.d("url", Constant.REQUEST_RATED_LIST_URL + "&&" + page);
                 break;
 
         }

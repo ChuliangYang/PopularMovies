@@ -52,6 +52,7 @@ public class MovieDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
         setUpToolBar();
         configGlide();
+        configTransition();
         if (getIntent().getParcelableExtra("MovieDetailBean") != null && getIntent().getParcelableExtra("MovieDetailBean") instanceof MovieListResponseBean.ResultsBean) {
             resultsBean = getIntent().getParcelableExtra("MovieDetailBean");
         }
@@ -63,6 +64,9 @@ public class MovieDetailActivity extends BaseActivity {
             tvVote.setText(JointHelper.jointVoteAverage(resultsBean.getVote_average()));
             tvSynopsis.setText(resultsBean.getOverview());
         }
+    }
+
+    private void configTransition() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             TransitionSet transitionSet=new TransitionSet();
             transitionSet.addTransition(new ChangeImageTransform());
@@ -74,9 +78,6 @@ public class MovieDetailActivity extends BaseActivity {
             getWindow().setAllowEnterTransitionOverlap(false);
             getWindow().setAllowReturnTransitionOverlap(false);
         }
-
-
-
     }
 
     private void configGlide() {

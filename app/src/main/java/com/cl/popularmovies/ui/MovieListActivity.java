@@ -146,9 +146,9 @@ public class MovieListActivity extends BaseActivity implements OnReceiveMoviesLi
             } else {
                 movieListAdapter.notifyItemRangeInserted(resultsBeans.size() - movieBeans.size(), movieBeans.size());
             }
-            Log.e("recyclerview", "------------------------------------adapter数据刷新---------------------------------------");
-            Log.e("recyclerview", "从第" + String.valueOf(resultsBeans.size() - movieBeans.size() + 1) + "个开始添加共20个");
-            Log.e("recyclerview", "------------------------------------adapter数据刷新---------------------------------------");
+//            Log.d("recyclerview", "------------------------------------adapter数据刷新---------------------------------------");
+//            Log.d("recyclerview", "从第" + String.valueOf(resultsBeans.size() - movieBeans.size() + 1) + "个开始添加共20个");
+//            Log.d("recyclerview", "------------------------------------adapter数据刷新---------------------------------------");
         }
     }
 
