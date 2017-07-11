@@ -61,13 +61,14 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
             }
             if (!isCancelled()) {
                 response = responseBuilder.toString();
-                Log.i("response", response);
+//                Log.d("response", response);
                 if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     getResponseSuccess = true;
                 }
-            } else {
-//                Log.d("net", "---------------------------------------------------任务取消了----------------------------------------");
             }
+//            else {
+//                Log.d("net", "---------------------------------------------------任务取消了----------------------------------------");
+//            }
 
         } catch (IOException e) {
             e.printStackTrace();
