@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="movie_list_activity">Pop Movies</string>
+    <string name="sort_popular">most popular</string>
+    <string name="sort_rated">top rated</string>
+    <string name="confirm_exit">Confirm Exit</string>
+    <string name="exit_message">Are you sure you want to exit?</string>
+    <string name="button_confirm">YES</string>
+    <string name="button_cancel">NO</string>
+    <string name="movie_detail_activity">MovieDetail</string>
+</resources>

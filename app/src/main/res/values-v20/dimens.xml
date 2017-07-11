@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="custom_wrap_content">-2</integer>
+    <integer name="custom_match_parent">-1</integer>
+    <dimen name="item_view_wrap_content">@integer/custom_wrap_content</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+</resources>
