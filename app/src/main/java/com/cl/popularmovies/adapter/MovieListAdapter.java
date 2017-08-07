@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,9 +44,11 @@ public class MovieListAdapter extends RecyclerView.Adapter {
 
     private void configGlide() {
         options = new RequestOptions();
-        options.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+        options.diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         options.centerCrop();
-        options.format(DecodeFormat.PREFER_ARGB_8888);
+        options.format(DecodeFormat.PREFER_RGB_565);
+        options.placeholder(R.drawable.ic_place_holder);
+        options.skipMemoryCache(true);
     }
 
     @Override
@@ -73,11 +74,7 @@ public class MovieListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MovieItemViewHolder) {
             Glide.with(context).load(JointHelper.jointPicURL(resultsBeans.get(position).getPoster_path())).apply(options).into(((MovieItemViewHolder) holder).iv_movie);
-//            Log.d("MovieListAdapter", "显示第" + (position + 1) + "个view");
         }
-//        else {
-//            Log.d("MovieListAdapter", "显示footerview");
-//        }
     }
 
     @Override
@@ -107,7 +104,7 @@ public class MovieListAdapter extends RecyclerView.Adapter {
                 Intent intent = new Intent(context, MovieDetailActivity.class);
                 intent.putExtra("MovieDetailBean", resultsBeans.get(getAdapterPosition()));
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation((Activity) context, v,"share");
+                        makeSceneTransitionAnimation((Activity) context, v, "share");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     context.startActivity(intent, options.toBundle());
                 } else {

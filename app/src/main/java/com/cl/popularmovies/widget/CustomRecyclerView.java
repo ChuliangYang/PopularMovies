@@ -21,6 +21,8 @@ public class CustomRecyclerView extends RecyclerView {
     private Boolean startCount = false;
     private GridLayoutManager gridLayoutManager;
     private Boolean showBottomView = true;
+    private boolean canLoadMore = true;
+    private int scorllY = 0;
 
     public CustomRecyclerView(Context context) {
         super(context);
@@ -28,7 +30,9 @@ public class CustomRecyclerView extends RecyclerView {
 
     public CustomRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        if (canLoadMore) {
+            canLoadMore();
+        }
     }
 
     public CustomRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
@@ -45,7 +49,12 @@ public class CustomRecyclerView extends RecyclerView {
                         case 0:
                             return 1;
                         case 1:
-                            return 2;
+                            if (canLoadMore) {
+                                return 2;
+                            } else {
+                                return 0;
+                            }
+
                     }
                     return 0;
                 }
@@ -54,7 +63,7 @@ public class CustomRecyclerView extends RecyclerView {
         super.onAttachedToWindow();
     }
 
-    private void init() {
+    private void canLoadMore() {
         addOnScrollListener(new OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -72,6 +81,8 @@ public class CustomRecyclerView extends RecyclerView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                scorllY += dy;
+                Log.e("onScrolled:  scrolly ", String.valueOf(scorllY));
                 gridLayoutManager = (GridLayoutManager) getLayoutManager();
                 if (!isScroll) {
                     hideBottomView();
@@ -140,5 +151,18 @@ public class CustomRecyclerView extends RecyclerView {
             showBottomView = false;
         }
 
+    }
+
+    public void shouldLoadMore(boolean shouldLoadMore) {
+        this.canLoadMore = shouldLoadMore;
+        if (canLoadMore) {
+            canLoadMore();
+        } else {
+            removeOnScrollListener(null);
+        }
+    }
+
+    public int getScorllY() {
+        return scorllY;
     }
 }

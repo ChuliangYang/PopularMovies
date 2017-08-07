@@ -61,7 +61,7 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
             }
             if (!isCancelled()) {
                 response = responseBuilder.toString();
-//                Log.d("response", response);
+                Log.d("response", response);
                 if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     getResponseSuccess = true;
                 }
@@ -93,7 +93,7 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
     @Override
     protected void onCancelled() {
         super.onCancelled();
-//        Log.d("asynctask", "---------------------------------------------------任务取消了----------------------------------------");
+        Log.e("asynctask", "---------------------------------------------------任务取消了----------------------------------------");
     }
 
     public RequestServerTask showProgressBar(Boolean show) {
@@ -111,5 +111,9 @@ public class RequestServerTask extends AsyncTask<URL, Void, String> {
         rootContainer.addView(mProgressBar);
         progressDialog.setCancelable(true);
         progressDialog.setOnCancelListener(dialog -> this.cancel(true));
+    }
+
+    public void cancel() {
+        cancel(true);
     }
 }

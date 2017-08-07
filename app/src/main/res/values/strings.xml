@@ -8,4 +8,8 @@
     <string name="button_confirm">YES</string>
     <string name="button_cancel">NO</string>
     <string name="movie_detail_activity">MovieDetail</string>
+    <string name="trailers">Trailers</string>
+    <string name="reviews">Reviews</string>
+    <string name="sort_favorite">my favorite</string>
+    <string name="share">share</string>
 </resources>

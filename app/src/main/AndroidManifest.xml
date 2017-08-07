@@ -3,6 +3,12 @@
     package="com.com.cl.popularmovies">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="cl.permission.CONTENTPROVIDER" />
+
+    <permission
+        android:name="cl.permission.CONTENTPROVIDER"
+        android:label="Allow use content provider"
+        android:protectionLevel="normal" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +24,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.cl.popularmovies.ui.MovieDetailActivity"></activity>
+        <activity
+            android:name="com.cl.popularmovies.ui.MovieDetailActivity"
+            android:launchMode="singleTop"></activity>
+
+        <provider
+            android:name="com.cl.popularmovies.contentProvider.FavoriteMoviesProvider"
+            android:authorities="com.com.cl.popularmovies"
+            android:exported="false"
+            android:multiprocess="false"
+            android:permission="cl.permission.CONTENTPROVIDER" />
     </application>
 
 </manifest>

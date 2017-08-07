@@ -1,12 +1,11 @@
 package com.cl.popularmovies.net;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.cl.popularmovies.Interface.OnReceiveMoviesList;
 import com.cl.popularmovies.Interface.OnResponseListener;
 import com.cl.popularmovies.bean.MovieListResponseBean;
-import com.cl.popularmovies.data.Constant;
+import com.cl.popularmovies.constant.Network;
 import com.google.gson.Gson;
 
 import java.net.MalformedURLException;
@@ -31,20 +30,20 @@ public class RequestMovieList implements OnResponseListener {
         switch (sortType) {
             case SORT_POPULAR:
                 try {
-                    new RequestServerTask(context, this).showProgressBar(showProgressBar).execute(new URL(Constant.REQUEST_POP_LIST_URL + "&&page=" + page));
+                    new RequestServerTask(context, this).showProgressBar(showProgressBar).execute(new URL(Network.REQUEST_POP_LIST_URL + "&&page=" + page));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
 
-//                Log.d("url", Constant.REQUEST_POP_LIST_URL + "&&" + page);
+//                Log.d("url", Network.REQUEST_POP_LIST_URL + "&&" + page);
                 break;
             case SORT_RATED:
                 try {
-                    new RequestServerTask(context, this).showProgressBar(showProgressBar).execute(new URL(Constant.REQUEST_RATED_LIST_URL + "&&page=" + page));
+                    new RequestServerTask(context, this).showProgressBar(showProgressBar).execute(new URL(Network.REQUEST_RATED_LIST_URL + "&&page=" + page));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-//                Log.d("url", Constant.REQUEST_RATED_LIST_URL + "&&" + page);
+//                Log.d("url", Network.REQUEST_RATED_LIST_URL + "&&" + page);
                 break;
 
         }
