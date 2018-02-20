@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.3'
     defaultConfig {
         applicationId "com.example.cl.popularmovies"
         minSdkVersion 15
@@ -39,13 +39,13 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.android.support:support-v4:25.3.1'
-//    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
-    compile("com.github.bumptech.glide:recyclerview-integration:4.0.0") {
+    //    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+    compile('com.github.bumptech.glide:recyclerview-integration:4.0.0') {
         // Excludes the support library because it's already included by Glide.
         transitive = false
     }
     compile 'com.google.code.gson:gson:2.8.1'
-//    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    //    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
     compile 'com.github.bumptech.glide:glide:4.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     compile 'com.android.support:support-v4:25.3.1'
