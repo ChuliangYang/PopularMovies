@@ -1,5 +1,5 @@
 # PopularMovies
-A movie guide app.Display movie list and can be sorted.The sort type can be by most popular,by highest-rated or by favorite.Display movie describtion and reviews.Launch Youtube when click movie trailer.
+A movie guide app, optimized for tablets, to help users discover popular and highly rated movies on the web. It displays a scrolling grid of movie trailers, launches a details screen whenever a particular movie is selected, allows users to save favorites, play trailers, and read user reviews. This app utilizes core Android user interface components and fetches movie information using themoviedb.org web API.
 ## Feature
 * Fetch data from the Internet with theMovieDB API.
 * Favorite data are stored in a native SQLite database and are exposed via a ContentProvider. This ContentProvider is updated whenever the user favorites or unfavorites a movie.
