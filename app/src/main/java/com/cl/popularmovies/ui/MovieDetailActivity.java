@@ -48,7 +48,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class MovieDetailActivity extends BaseActivity implements OnReceiveTrailersData, OnReceiveReviewsData {
 
     @BindView(R.id.tv_title)
@@ -127,6 +126,7 @@ public class MovieDetailActivity extends BaseActivity implements OnReceiveTraile
         checkedIfFavorite();
     }
 
+//    @Background
     private void checkedIfFavorite() {
         contentResolver = getContentResolver();
         Cursor query = contentResolver.query(Uri.parse(FavoriteMoviesContract.BASE_CONTENT_URI + "/" + FavoriteMoviesContract.FAVORITE_MOVIES_PATH + "/" + resultsBean.getId()), new String[]{FavoriteMoviesEntry._ID}, null, null, null);
@@ -145,7 +145,7 @@ public class MovieDetailActivity extends BaseActivity implements OnReceiveTraile
         }
 
     }
-
+//    @UiThread
     private void configTransition() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             TransitionSet transitionSet = new TransitionSet();

@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -27,7 +26,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+import icepick.Icepick;
+import icepick.State;
 
 public class MovieListActivity extends BaseActivity implements OnReceiveMoviesList {
     private final int SORT_POP = 1;
@@ -41,11 +41,14 @@ public class MovieListActivity extends BaseActivity implements OnReceiveMoviesLi
     CustomRecyclerView rv_movie_list;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
-    private List<MovieListResponseBean.ResultsBean> resultsBeans = new ArrayList();
+    @State
+    ArrayList<MovieListResponseBean.ResultsBean> resultsBeans = new ArrayList();
     private MovieListAdapter movieListAdapter;
     private MovieListActivity MovieListActivity;
-    private int page = 1;
-    private int sortType = SORT_POP;
+    @State
+     int page = 1;
+    @State
+     int sortType = SORT_POP;
     private AlertDialog alertDialog;
     private AlertDialog.Builder builder;
     private ContentObserver contentObserver;
@@ -56,13 +59,13 @@ public class MovieListActivity extends BaseActivity implements OnReceiveMoviesLi
         super.onCreate(savedInstanceState);
         MovieListActivity = this;
         setContentView(R.layout.activity_movie_list);
+        Icepick.restoreInstanceState(this, savedInstanceState);
         ButterKnife.bind(this);
         setUpToolBar();
         configAlertDialog();
         setUpSwipeLayout();
         setUpRecyclerView();
-        if (savedInstanceState != null && savedInstanceState.getParcelableArrayList("resultsBeans") != null) {
-            restoreListData(savedInstanceState);
+        if (savedInstanceState != null && resultsBeans != null) {
         } else {
             requestMoviesList();
         }
@@ -70,9 +73,9 @@ public class MovieListActivity extends BaseActivity implements OnReceiveMoviesLi
     }
 
     private void restoreListData(Bundle savedInstanceState) {
-        resultsBeans.addAll(savedInstanceState.getParcelableArrayList("resultsBeans"));
-        page = savedInstanceState.getInt("page");
-        sortType = savedInstanceState.getInt("sortType");
+        resultsBeans.addAll(resultsBeans);
+//        page = savedInstanceState.getInt("page");
+//        sortType = savedInstanceState.getInt("sortType");
         movieListAdapter.notifyDataSetChanged();
     }
 
@@ -240,11 +243,12 @@ public class MovieListActivity extends BaseActivity implements OnReceiveMoviesLi
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (resultsBeans.size() > 0) {
-            outState.putParcelableArrayList("resultsBeans", (ArrayList<? extends Parcelable>) resultsBeans);
-            outState.putInt("page", page);
-            outState.putInt("sortType", sortType);
-        }
+//        if (resultsBeans.size() > 0) {
+//            outState.putParcelableArrayList("resultsBeans", (ArrayList<? extends Parcelable>) resultsBeans);
+//            outState.putInt("page", page);
+//            outState.putInt("sortType", sortType);
+//        }
+        Icepick.saveInstanceState(this, outState);
     }
 
 

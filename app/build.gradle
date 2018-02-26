@@ -10,9 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions {
-            enabled true
-        }
+//        jackOptions {
+//            enabled true
+//        }
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -56,6 +56,6 @@ dependencies {
     annotationProcessor "org.androidannotations:androidannotations:4.4.0"
     compile "org.androidannotations:androidannotations-api:4.4.0"
     compile 'frankiesardo:icepick:3.2.0'
-    provided 'frankiesardo:icepick-processor:3.2.0'
+    annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
 }
 
