@@ -58,7 +58,7 @@ dependencies {
     implementation 'frankiesardo:icepick:3.2.0'
     annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(':baselibrary')
+    implementation project(':BaseLibrary')
 }
 repositories {
     mavenCentral()
