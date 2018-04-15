@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -119,6 +120,7 @@ dependencies {
     //test
     api rootProject.ext.dependencies["timber"]
     testImplementation rootProject.ext.dependencies["junit"]
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 
